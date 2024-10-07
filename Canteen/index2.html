@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canteen Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <form id="login-form" class="login-form">
+            <h2>Canteen Login</h2>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>// Define valid credentials (in a real application, these should be stored securely on the server side)
+        const validUsername = "user";
+        const validPassword = "password";
+        
+        // Handle form submission
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+        
+            // Get input values
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+        
+            // Check if username and password match the valid credentials
+            if (username === validUsername && password === validPassword) {
+                alert("Login successful!");
+                // Redirect or do something else upon successful login
+                // For example, redirect to a new page:
+                // window.location.href = "dashboard.html";
+            } else {
+                alert("Invalid username or password. Please try again.");
+            }
+        });
+        </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canteen Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Canteen Management System</h1>
+    </header>
+    <main>
+        <section id="order-section">
+            <h2>Place an Order</h2>
+            <form id="order-form">
+                <label for="item">Select Item:</label>
+                <select id="item" name="item">
+                    <option value="sandwich">Sandwich</option>
+                    <option value="pizza">Pizza</option>
+                    <option value="salad">Salad</option>
+                </select><br><br>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1"><br><br>
+                <button type="submit">Place Order</button>
+            </form>
+        </section>
+        
+        <section id="orders-list">
+            <h2>Current Orders</h2>
+            <ul id="orders">
+                <!-- Orders will be dynamically added here -->
+            </ul>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const orderForm = document.getElementById('order-form');
+    const ordersList = document.getElementById('orders');
+
+    orderForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const item = document.getElementById('item').value;
+        const quantity = document.getElementById('quantity').value;
+
+        if (item && quantity > 0) {
+            const orderItem = document.createElement('li');
+            orderItem.classList.add('order-item');
+            orderItem.innerHTML = `<strong>${quantity} x ${item}</strong>`;
+            ordersList.appendChild(orderItem);
+
+            // Optional: Send order data to backend or do further processing
+            // Here, you can simulate sending data to backend with fetch API or AJAX
+
+            // Clear the form after submission
+            orderForm.reset();
+        } else {
+            alert('Please select an item and enter a valid quantity.');
+        }
+    });
+});
+
+</script>
+</html>
